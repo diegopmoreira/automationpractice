@@ -16,10 +16,16 @@ const config = {
     defaultTimeoutInterval: 2500000
   },
   params: {
-    environmentUrl: env.url.seleniumAddress
+    environmentUrl: env.get('url.environment'),
+    emailAddress: env.get('params.user'),
+    password: env.get('params.password'),
+    address: env.get('params.address')
+
   },
   suites: {
-    addProductCart: ['../test_spec/addProduct.js']
+    addProductCart: ['../test_spec/addProduct.js'],
+    checkout: ['../test_spec/checkout.js'],
+    UserLogin: ['../test_spec/UserLogin.js']
   },
   onPrepare () {
     jasmine.getEnv().addReporter(
@@ -32,6 +38,9 @@ const config = {
         screenshotsSubfolder: 'screenshots'
       }).getJasmine2Reporter()
     );
+    
+    browser.ignoreSynchronization = true;
+    browser.manage().window().maximize();
   }
 };
 

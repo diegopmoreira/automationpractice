@@ -1,7 +1,7 @@
 /* global browser */
 
 describe('Add Product to Cart', function () {
-  const addProduct = require('../../test_blocks/login/addProductBlock.js')
+  const addProduct = require('../test_blocks/add/addProductBlock.js')
 
   it('Add Product from Landing Page', function () {
    addProduct.productFromLandingPage(browser.params.environmentUrl);

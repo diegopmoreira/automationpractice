@@ -2,11 +2,11 @@
 
 var BasePage = function () {
 
-    this.navigateToURL = function (url) {
+    this.navigationToUrl = (url) => {
         return browser.get(url);
     };
 
-    this.getPageTitle = function () {
+    this.getPageTitle = () => {
         return browser.getTitle();
     };
 };

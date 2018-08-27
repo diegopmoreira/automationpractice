@@ -11,7 +11,7 @@ const addProductBlock = function () {
 
   this.productFromWomenTab = (url) => {
     base.navigationToUrl(url);
-    ProductPage.clickDressesTab();
+    ProductPage.clickWomenTab();
     ProductPage.hoverProduct();
     ProductPage.clickAddToCart();
     ProductPage.continueShopping();
@@ -27,7 +27,7 @@ const addProductBlock = function () {
 
   this.productFromTShirtsTab = (url) => {
     base.navigationToUrl(url);
-    ProductPage.clickDressesTab();
+    ProductPage.clickTShirtTab();
     ProductPage.hoverProduct();
     ProductPage.clickAddToCart();
     ProductPage.continueShopping();
