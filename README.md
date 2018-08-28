@@ -1,4 +1,4 @@
-# Automation Pratice
+# Automation Practice
 
 This is the test to evaluate the knowledge about automation tests.
 
