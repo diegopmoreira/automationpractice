@@ -1,9 +1,12 @@
 /* global By, element */
 'use strict'
+const uuidv4 = require('uuid/v4');
 const UserLoginPage = function () {
     const EC = protractor.ExpectedConditions;
 
     this.typeEmail = (email) => {
+        email = email.split("variable");
+        email = email[0] + `${uuidv4()}` + email[1];
         element(by.id('email_create')).sendKeys(email);
     }
 
@@ -44,14 +47,12 @@ const UserLoginPage = function () {
         element(by.id('postcode')).sendKeys('00000');
     }
 
-    this.selectCountry = () => {
-    }
+    this.selectCountry = () => {}
 
     this.typeMobilePhone = () => {
         element(by.id('phone_mobile')).sendKeys('12345678');
     }
-    this.typeAddressAlias = () => {
-    }
+    this.typeAddressAlias = () => {}
 
     this.clickRegister = () => {
         element(by.id('submitAccount')).click();
@@ -60,18 +61,21 @@ const UserLoginPage = function () {
     this.StepAddress = (address) => {
         expect(element(by.className('address_address1')).getText()).toEqual(address);
         element(by.xpath('//button[@name="processAddress"]')).click();
-        
+
     }
     this.StepShipping = () => {
         element(by.id('cgv')).click();
 
         element(by.xpath('//button[@name="processCarrier"]')).click();
-      
+
     }
 
     this.StepPayment = () => {
+        let totalprice = element(by.id('total_price')).getText();
         element(by.className('cheque')).click();
-        element(by.xpath('//*[@id="cart_navigation"]/button/span]')).click();
+        element(by.css('#cart_navigation > button')).click();
+        expect(element(by.css('.price > strong')).getText()).toEqual(totalprice);
+
     }
 };
 
